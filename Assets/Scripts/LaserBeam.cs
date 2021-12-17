@@ -25,8 +25,13 @@ public class LaserBeam : MonoBehaviour
     {
         if (Physics2D.Raycast(m_transform.position, transform.right))
         {
+
             RaycastHit2D hit = Physics2D.Raycast(laserFirePoint.position, transform.right);
             Draw2DRay(laserFirePoint.position, hit.point);
+            if (hit.transform.tag == "Mirror")
+            {
+                hit.transform.GetComponent<mirror>().Mirror();
+            }
         }
         else
         {
